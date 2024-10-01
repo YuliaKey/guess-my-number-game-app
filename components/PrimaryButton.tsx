@@ -6,14 +6,10 @@ export type ButtonProps = {
 };
 
 const PrimaryButton = ({ name, onPress }: ButtonProps) => {
-  const handlePressButton = () => {
-    console.log("Pressed");
-    onPress();
-  };
   return (
     <View style={styles.buttonOuterContainer}>
       <Pressable
-        onPress={handlePressButton}
+        onPress={onPress}
         android_ripple={{ color: "#640233" }}
         style={({ pressed }) => [
           styles.buttonInnerContainer,
