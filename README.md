@@ -1,50 +1,51 @@
-# Welcome to your Expo app 👋
+# 🎮 Guess My Number Game
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Welcome to **Guess My Number**, a fun mini-game built with [Expo](https://expo.dev), React Native and TypeScript! In this game, you pick a number, and the computer will try to guess it by following your instructions — whether the guess is too high or too low. Once the computer guesses correctly, the game is over!
 
-## Get started
+## 🚀 Getting Started
 
-1. Install dependencies
+Follow these instructions to get the game running on your local machine for development or testing purposes.
 
-   ```bash
-   npm install
-   ```
+### 1. Install Dependencies
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Make sure you have all the necessary dependencies installed by running the following command:
 
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Start the App
 
-## Learn more
+To start the app, simply run:
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npx expo start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+This will launch Expo's developer tools, where you can choose to run the app on an Android Emulator, iOS Simulator, or using the Expo Go app on your phone.
 
-## Join the community
+## 📱 How to Play
 
-Join our community of developers creating universal apps.
+**Start the Game:** Enter a number for the computer to guess.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+**Computer Guesses:** The computer will make a guess, and you will need to guide it by pressing the Higher or Lower buttons, depending on whether the guess is too low or too high.
+
+**Game Over:** Once the computer guesses your number correctly, the game ends, and the Game Over screen is displayed.
+
+## 🎯 Key Features
+
+**Fun Game Logic:** Let the computer guess your number by guiding it with the Higher or Lower buttons.
+**Simple User Interface:** Intuitive and responsive design with React Native components.
+**Game Screens:** The app includes three screens — the Start Game Screen, the Game Screen, and the Game Over Screen.
+
+## Project Structure
+
+This project uses file-based routing for organizing screens. Below is an overview of the key files and folders:
+
+**screens/:** Contains the main screens of the game, including StartGameScreen.tsx, GameScreen.tsx, and GameOverScreen.tsx.
+**components/:** UI components such as NumberContainer, Title, PrimaryButton, and custom cards used across the app.
+**constants/:** Contains app constants like colors.
+
+## 🛠️ Development
+
+To modify the project or start developing new features, simply edit the files in the **app** directory. The project will automatically reload as you save changes.
