@@ -13,9 +13,11 @@ import GameOverScreen from "@/screens/GameOverScreen";
 SplashScreen.preventAutoHideAsync();
 
 export default function Index() {
-  const [userNumber, setUserNumber] = useState<number>();
+  const [userNumber, setUserNumber] = useState<number | null>();
 
   const [gameIsOver, setGameIsOver] = useState<boolean>(true);
+
+  const [guessRounds, setGuessRounds] = useState<number>(0);
 
   const [fontsLoaded] = useFonts({
     "open-sans": require("../assets/fonts/OpenSans-Regular.ttf"),
@@ -32,13 +34,19 @@ export default function Index() {
     return null;
   }
 
+  const startNewGameHandler = () => {
+    setUserNumber(null);
+    setGuessRounds(0);
+  };
+
   const pickedNumberHandler = (pickedNumber: number) => {
     setUserNumber(pickedNumber);
     setGameIsOver(false);
   };
 
-  const gameOverHandler = () => {
+  const gameOverHandler = (rounds: number) => {
     setGameIsOver(true);
+    setGuessRounds(rounds);
   };
 
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
@@ -50,7 +58,13 @@ export default function Index() {
   }
 
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        rounds={guessRounds}
+        userNumber={userNumber}
+        onStartNewGame={startNewGameHandler}
+      />
+    );
   }
 
   return (
