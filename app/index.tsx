@@ -1,16 +1,36 @@
+import { useEffect, useState } from "react";
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
+
 import { LinearGradient } from "expo-linear-gradient";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 
 import StartGameScreen from "@/screens/StartGameScreen";
-import { useState } from "react";
 import GameScreen from "@/screens/GameScreen";
 import Colors from "@/constants/colors";
 import GameOverScreen from "@/screens/GameOverScreen";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Index() {
   const [userNumber, setUserNumber] = useState<number>();
 
   const [gameIsOver, setGameIsOver] = useState<boolean>(true);
+
+  const [fontsLoaded] = useFonts({
+    "open-sans": require("../assets/fonts/OpenSans-Regular.ttf"),
+    "open-sans-bold": require("../assets/fonts/OpenSans-Bold.ttf"),
+  });
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   const pickedNumberHandler = (pickedNumber: number) => {
     setUserNumber(pickedNumber);

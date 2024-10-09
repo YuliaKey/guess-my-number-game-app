@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 import Colors from "../../constants/colors";
 
 export type ButtonProps = {
-  name: string;
+  name: React.ReactNode;
   onPress: () => void;
 };
 

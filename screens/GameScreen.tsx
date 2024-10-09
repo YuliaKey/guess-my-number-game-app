@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import NumberContainer from "@/components/Game/NumberContainer";
 import Title from "@/components/ui/Title";
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import Card from "@/components/ui/Card";
+import InstructionText from "@/components/ui/InstructionText";
 
 type GameScreenProps = {
   userNumber: number;
@@ -69,23 +72,30 @@ export default function GameScreen({
     <View style={styles.screen}>
       <Title text="Opponent's guess" />
       <NumberContainer number={currentGuess} />
-      <View>
-        <Text>Higher or lower?</Text>
-        <View>
-          <PrimaryButton
-            name="-"
-            onPress={() => {
-              nextGuessHandler(Direction.LOWER);
-            }}
-          />
-          <PrimaryButton
-            name="+"
-            onPress={() => {
-              nextGuessHandler(Direction.HIGHER);
-            }}
-          />
+      <Card>
+        <InstructionText
+          text="Higher or lower?"
+          style={styles.instructionText}
+        />
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton
+              name={<Ionicons name="remove" size={24} color="white" />}
+              onPress={() => {
+                nextGuessHandler(Direction.LOWER);
+              }}
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton
+              name={<Ionicons name="add" size={24} color="white" />}
+              onPress={() => {
+                nextGuessHandler(Direction.HIGHER);
+              }}
+            />
+          </View>
         </View>
-      </View>
+      </Card>
       <View>
         <Text>LOG ROUNDS</Text>
       </View>
@@ -97,5 +107,14 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 24,
+  },
+  instructionText: {
+    marginBottom: 12,
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+  },
+  buttonContainer: {
+    flex: 1,
   },
 });
